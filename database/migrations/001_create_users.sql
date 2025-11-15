@@ -12,9 +12,9 @@ CREATE TABLE users (
   program TEXT NOT NULL,
   profile_photo_url TEXT,
   tagline TEXT,
-  current_role TEXT,
-  current_company TEXT,
-  current_industry TEXT,
+  "current_role" TEXT,
+  "current_company" TEXT,
+  "current_industry" TEXT,
   location_city TEXT,
   location_country TEXT,
   bio TEXT,
@@ -34,7 +34,7 @@ CREATE TABLE users (
 -- Create indexes for performance
 CREATE INDEX idx_users_email ON users(email);
 CREATE INDEX idx_users_location ON users(location_city, location_country);
-CREATE INDEX idx_users_industry ON users(current_industry);
+CREATE INDEX idx_users_industry ON users("current_industry");
 CREATE INDEX idx_users_graduation_year ON users(graduation_year);
 CREATE INDEX idx_users_active ON users(is_active) WHERE is_active = true;
 CREATE INDEX idx_users_expertise ON users USING GIN(expertise_tags);
