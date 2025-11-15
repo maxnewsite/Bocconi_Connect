@@ -170,8 +170,8 @@ WITH CHECK (
   EXISTS (
     SELECT 1 FROM connections
     WHERE status = 'accepted'
-    AND ((requester_id = auth.uid() AND recipient_id = NEW.recipient_id)
-      OR (recipient_id = auth.uid() AND requester_id = NEW.recipient_id))
+    AND ((connections.requester_id = auth.uid() AND connections.recipient_id = messages.recipient_id)
+      OR (connections.recipient_id = auth.uid() AND connections.requester_id = messages.recipient_id))
   )
 );
 
